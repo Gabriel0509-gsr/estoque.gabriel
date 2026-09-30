@@ -14,7 +14,6 @@
                                 <li class="breadcrumb-item active" aria-current="page">Cadastro de materiais</li>
                             </ol>
                         </nav>
-
                         <span class="badge rounded-pill text-bg-danger mb-3">Estoque escolar</span>
                         <h1 class="fw-bold mb-1" id="titulo-cadastro-material">Cadastrar material</h1>
                         <p class="text-secondary mb-4">Preencha as informações para identificar e acompanhar o material.</p>
