@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\FornecedorController;
 use App\Http\Controllers\MaterialController;
-use App\Http\Controllers\materialfornecedorController;
+use App\Http\Controllers\MaterialfornecedorController;
 use App\Http\Controllers\MovimentacaoController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
