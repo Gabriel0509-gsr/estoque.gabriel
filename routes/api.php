@@ -27,13 +27,6 @@ Route::get('/listar_materiais_simples', [MaterialController::class, 'listar_mate
 Route::put('/alterar_material', [MaterialController::class, 'alterar_material']);
 Route::delete('/deletar_material', [MaterialController::class, 'deletar_material']);
 
-Route::post('/salvar_material_fornecedor', [MaterialfornecedorController::class, 'salvar_materialfornecedor']);
-Route::get('/ver_material_fornecedor', [MaterialfornecedorController::class, 'ver_material']);
-Route::get('/listar_materiais_fornecedores', [MaterialfornecedorController::class, 'listar_materiais']);
-Route::get('/listar_materiais_fornecedores_simples', [MaterialfornecedorController::class, 'listar_materiais_simples']);
-Route::put('/alterar_material_fornecedor', [MaterialfornecedorController::class, 'alterar_material']);
-Route::delete('/deletar_material_fornecedor', [MaterialfornecedorController::class, 'deletar_material']);
-
 Route::post('/salvar_movimentacao', [MovimentacaoController::class, 'salvar_movimentacao']);
 Route::get('/ver_movimentacao', [MovimentacaoController::class, 'ver_movimentacao']);
 Route::get('/listar_movimentacoes', [MovimentacaoController::class, 'listar_movimentacoes']);
