@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Usuario;
+use App\Models\UsuarioToken;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -167,4 +169,48 @@ class UsuarioController extends Controller
             return response()->json(['message' => 'Erro ao deletar usuário!', 'erro' => 's', 'msg_erro' => $th->getMessage()], 200);
         }
     }
+
+
+    public function loginApi(Request $request): JsonResponse
+    {
+        $request->validate([
+            'email' => 'required',
+            'senha' => 'required',
+        ]);
+
+        $usuario = Usuario::where('email', '=', $request->email)->first();
+        if ($usuario) {
+            if (Hash::check($request->senha, $usuario->senha)) {
+                $usuarioToken = new UsuarioToken;
+                $usuarioToken->usuario_id = $usuario->id;
+                $usuarioToken->token = Hash::make($usuario->id.$usuario->email.now());
+                $usuarioToken->valido_ate = now()->addDays(7);
+                $usuarioToken->save();
+
+                return response()->json(['message' => 'Login realizado com sucesso!', 'erro' => 'n', 'token' => $usuarioToken->token], 200);
+            }
+
+            return response()->json(['message' => 'Usuario ou senha incorretos!', 'erro' => 's'], 200);
+        }
+
+        return response()->json(['message' => 'Email não encontrado!', 'erro' => 's'], 200);
+    }
+
+    public function logoutApi(Request $request): JsonResponse
+    {
+        $request->validate([
+            'usuario_id' => 'required',
+            'token' => 'required',
+        ]);
+
+        $usuarioToken = UsuarioToken::where('token', '=', $request->token)->first();
+        if ($usuarioToken) {
+            $usuarioToken->delete();
+
+            return response()->json(['message' => 'Logout realizado com sucesso!', 'erro' => 'n'], 200);
+        }
+
+        return response()->json(['message' => 'Token inválido!', 'erro' => 's'], 200);
+    }
+    
 }
