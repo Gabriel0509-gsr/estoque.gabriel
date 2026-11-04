@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+<<<<<<< HEAD
 use App\Models\Fornecedor;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -131,4 +132,13 @@ class FornecedorController extends Controller
             return response()->json(['message' => 'Erro ao deletar fornecedor!', 'erro' => 's', 'msg_erro' => $th->getMessage()], 200);
         }
     }
+=======
+use Illuminate\Http\Request;
+use App\Models\Fornecedor;    
+
+
+class FornecedorController extends Controller
+{
+    //
+>>>>>>> origin/main
 }

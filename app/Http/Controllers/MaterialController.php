@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+<<<<<<< HEAD
 use App\Models\Material;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -26,6 +27,15 @@ class MaterialController extends Controller
     }
 
     public function update(Request $request, Material $material): RedirectResponse
+=======
+
+use App\Models\Material;
+use Illuminate\Http\Request;
+
+class MaterialController extends Controller
+{
+    public function store(Request $request)
+>>>>>>> origin/main
     {
         $dados = $request->validate([
             'nome' => ['required', 'string', 'max:255'],
@@ -35,6 +45,7 @@ class MaterialController extends Controller
             'estoque_minimo' => ['required', 'integer', 'min:0'],
             'localizacao' => ['required', 'string', 'max:255'],
             'estado_conservacao' => ['required', 'string', 'max:255'],
+<<<<<<< HEAD
         ]);
 
         $material->update($dados);
@@ -162,5 +173,19 @@ class MaterialController extends Controller
             return response()->json(['message' => 'Erro ao deletar material!', 'erro' => 's', 'msg_erro' => $th->getMessage()], 200);
         }
 
+=======
+        ], [
+            'required' => 'Preencha este campo.',
+            'max' => 'Este campo deve ter no máximo :max caracteres.',
+            'integer' => 'Informe um número inteiro.',
+            'min' => 'O valor não pode ser negativo.',
+        ]);
+
+        Material::create($dados);
+
+        return redirect()
+            ->route('tabela_materiais')
+            ->with('success', 'Produto cadastrado com sucesso.');
+>>>>>>> origin/main
     }
 }

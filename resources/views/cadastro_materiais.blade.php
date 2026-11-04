@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 @extends('layout_principal.principal')
 
 @section('title', 'Cadastro de materiais | estoque edu')
+=======
+@extends('layout.principal')
+
+@section('title', 'Cadastro de materiais | SEME')
+>>>>>>> origin/main
 
 @section('content')
     <div class="container py-3 py-lg-4">
@@ -76,7 +82,11 @@
                             </div>
 
                             <div class="d-flex flex-column flex-sm-row justify-content-end gap-2 mt-4">
+<<<<<<< HEAD
                                 <a href="{{ route('home') }}" class="btn btn-outline-secondary px-4">Cancelar</a>
+=======
+                                <a href="{{ route('tabela_materiais') }}" class="btn btn-outline-secondary px-4">Cancelar</a>
+>>>>>>> origin/main
                                 <button type="submit" class="btn btn-danger px-4 fw-semibold">Cadastrar produto</button>
                             </div>
                         </form>

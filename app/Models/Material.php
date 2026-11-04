@@ -7,7 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Material extends Model
 {
     protected $table = 'material';
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/main
     public $timestamps = false;
 
     protected $fillable = [
