@@ -1,12 +1,6 @@
-<<<<<<< HEAD
 @extends('layout_principal.principal')
 
 @section('title', 'Início | estoque edu')
-=======
-@extends('layout.principal')
-
-@section('title', 'Início | SEME')
->>>>>>> origin/main
 
 @section('content')
     <style>
@@ -56,25 +50,17 @@
     <div class="container py-3 py-lg-4">
         <section class="home-hero shadow-lg mb-4" id="home">
             <div class="card-body position-relative p-4 p-md-5" style="z-index: 1;">
-<<<<<<< HEAD
                 <span class="badge rounded-pill text-bg-danger mb-3">estoque edu · Gestão escolar</span>
-=======
-                <span class="badge rounded-pill text-bg-danger mb-3">SEME · Gestão escolar</span>
->>>>>>> origin/main
                 <h1 class="display-5 fw-bold mb-3">Materiais escolares sempre em ordem.</h1>
                 <p class="lead text-secondary mb-4" style="max-width: 48rem;">
                     Um espaço simples para organizar materiais, acompanhar fornecedores e manter tudo o que sua escola precisa em um só lugar.
                 </p>
                 <div class="d-flex flex-column flex-sm-row gap-3">
-<<<<<<< HEAD
                     @if (session('usuario_logado'))
                         <a href="{{ route('tabela_materiais') }}" class="btn btn-danger btn-lg px-4">Ver materiais</a>
                     @else
                         <a href="{{ route('cadastro_usuario') }}" class="btn btn-danger btn-lg px-4">Começar agora</a>
                     @endif
-=======
-                    <a href="{{ route('cadastro_usuario') }}" class="btn btn-danger btn-lg px-4">Começar agora</a>
->>>>>>> origin/main
                     <a href="{{ route('sobre') }}" class="btn btn-outline-secondary btn-lg px-4">Conheça o sistema</a>
                 </div>
             </div>
@@ -111,7 +97,6 @@
                         </span>
                         <h2 class="h5 fw-bold">Fornecedores</h2>
                         <p class="text-secondary mb-0">Mantenha os dados dos fornecedores centralizados para consultar quando precisar.</p>
-<<<<<<< HEAD
                         <a href="{{ route('cadastro_fornecedor') }}" class="btn btn-outline-danger mt-3">Cadastrar fornecedor</a>
                     </div>
                 </article>
@@ -129,11 +114,6 @@
                 </article>
             </div>
             
-=======
-                    </div>
-                </article>
-            </div>
->>>>>>> origin/main
         </section>
     </div>
 @endsection

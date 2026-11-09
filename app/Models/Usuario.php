@@ -7,10 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Usuario extends Model
 {
     protected $table = 'usuario';
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/main
     public $timestamps = false;
 
     protected $fillable = [
@@ -21,12 +18,9 @@ class Usuario extends Model
         'cpf',
         'data_nascimento',
     ];
-<<<<<<< HEAD
 
     public function funcionario()
     {
         return $this->hasOne(Funcionario::class, 'usuario_id');
     }
-=======
->>>>>>> origin/main
 }

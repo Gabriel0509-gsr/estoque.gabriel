@@ -2,12 +2,10 @@
 
 use App\Http\Controllers\FornecedorController;
 use App\Http\Controllers\MaterialController;
-use App\Http\Controllers\MaterialfornecedorController;
 use App\Http\Controllers\MovimentacaoController;
 use App\Http\Controllers\UsuarioController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\LoginApiMiddleware;
-use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\Route;
 
 Route::post('/salvar_usuario', [UsuarioController::class, 'salvar_usuario']);
 Route::get('/ver_usuario', [UsuarioController::class, 'ver_usuario']);
@@ -38,4 +36,4 @@ Route::delete('/deletar_movimentacao', [MovimentacaoController::class, 'deletar_
 
 Route::post('/login', [UsuarioController::class, 'loginApi']);
 Route::post('/logoutApi', [UsuarioController::class, 'logoutApi'])->middleware(LoginApiMiddleware::class);
-Route::delete('/logoutApi', [UsuarioController::class, 'deletar_token'])->middleware(LoginApiMiddleware::class);
+Route::delete('/logoutApi', [UsuarioController::class, 'logoutApi'])->middleware(LoginApiMiddleware::class);

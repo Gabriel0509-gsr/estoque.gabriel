@@ -1,12 +1,6 @@
-<<<<<<< HEAD
 @extends('layout_principal.principal')
 
 @section('title', 'Sobre | estoque edu')
-=======
-@extends('layout.principal')
-
-@section('title', 'Sobre | SEME')
->>>>>>> origin/main
 
 @section('content')
     <div class="container py-3 py-lg-4">
@@ -19,26 +13,15 @@
                     </ol>
                 </nav>
 
-<<<<<<< HEAD
                 <span class="badge rounded-pill text-bg-danger mb-3">Conheça o estoque edu</span>
                 <h1 class="display-5 fw-bold mb-3">Organização que apoia a educação.</h1>
                 <p class="lead text-secondary mb-0" style="max-width: 54rem;">
                     O estoque edu foi pensado para facilitar a gestão dos materiais escolares, reunindo em um só lugar informações sobre itens, estoque e fornecedores.
-=======
-                <span class="badge rounded-pill text-bg-danger mb-3">Conheça o SEME</span>
-                <h1 class="display-5 fw-bold mb-3">Organização que apoia a educação.</h1>
-                <p class="lead text-secondary mb-0" style="max-width: 54rem;">
-                    O SEME foi pensado para facilitar a gestão dos materiais escolares, reunindo em um só lugar informações sobre itens, estoque e fornecedores.
->>>>>>> origin/main
                 </p>
             </div>
         </section>
 
-<<<<<<< HEAD
         <section class="row g-3 g-lg-4" aria-label="Sobre o sistema estoque edu">
-=======
-        <section class="row g-3 g-lg-4" aria-label="Sobre o sistema SEME">
->>>>>>> origin/main
             <div class="col-md-6">
                 <article class="card h-100 border-0 rounded-4 shadow-sm" style="background-color: rgba(255, 255, 255, .94);">
                     <div class="card-body p-4 p-lg-5">
@@ -64,11 +47,7 @@
         </section>
 
         <div class="text-center mt-4">
-<<<<<<< HEAD
             <a href="{{ route('cadastro_materiais') }}" class="btn btn-danger btn-lg px-4">Cadastrar material</a>
-=======
-            <a href="{{ route('cadastro_materiais') }}" class="btn btn-danger btn-lg px-4">Cadastro de materiais</a>
->>>>>>> origin/main
         </div>
     </div>
 @endsection

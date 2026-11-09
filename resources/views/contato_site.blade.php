@@ -1,12 +1,6 @@
-<<<<<<< HEAD
 @extends('layout_principal.principal')
 
 @section('title', 'Contato | estoque edu')
-=======
-@extends('layout.principal')
-
-@section('title', 'Contato | SEME')
->>>>>>> origin/main
 
 @section('content')
     <div class="container py-3 py-lg-4">
@@ -26,11 +20,7 @@
                                 <span class="badge rounded-pill text-bg-danger mb-3">Fale com a gente</span>
                                 <h1 class="display-6 fw-bold mb-3">Como podemos ajudar?</h1>
                                 <p class="text-secondary mb-4">
-<<<<<<< HEAD
                                     Envie sua dúvida ou sugestão sobre o estoque edu. Nossa equipe poderá ajudar com o uso do sistema e a gestão dos materiais escolares.
-=======
-                                    Envie sua dúvida ou sugestão sobre o SEME. Nossa equipe poderá ajudar com o uso do sistema e a gestão dos materiais escolares.
->>>>>>> origin/main
                                 </p>
 
                                 <div class="d-flex gap-3 align-items-start mb-3">
@@ -50,7 +40,6 @@
                             </div>
 
                             <div class="col-lg-7">
-<<<<<<< HEAD
                                 @if (session('success'))
                                     <div class="alert alert-success" role="status">{{ session('success') }}</div>
                                 @endif
@@ -64,45 +53,24 @@
                                     <div class="mb-3">
                                         <label for="nome" class="form-label fw-semibold">Nome</label>
                                         <input type="text" class="form-control" id="nome" name="nome" value="{{ old('nome') }}" placeholder="Seu nome" autocomplete="name" required>
-=======
-                                <form>
-                                    <div class="mb-3">
-                                        <label for="nome" class="form-label fw-semibold">Nome</label>
-                                        <input type="text" class="form-control" id="nome" name="nome" placeholder="Seu nome" autocomplete="name" required>
->>>>>>> origin/main
                                     </div>
 
                                     <div class="mb-3">
                                         <label for="email" class="form-label fw-semibold">E-mail</label>
-<<<<<<< HEAD
                                         <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" placeholder="seu@email.com" autocomplete="email" required>
-=======
-                                        <input type="email" class="form-control" id="email" name="email" placeholder="seu@email.com" autocomplete="email" required>
->>>>>>> origin/main
                                     </div>
 
                                     <div class="mb-3">
                                         <label for="assunto" class="form-label fw-semibold">Assunto</label>
-<<<<<<< HEAD
                                         <input type="text" class="form-control" id="assunto" name="assunto" value="{{ old('assunto') }}" placeholder="Sobre o que deseja falar?" required>
-=======
-                                        <input type="text" class="form-control" id="assunto" name="assunto" placeholder="Sobre o que deseja falar?" required>
->>>>>>> origin/main
                                     </div>
 
                                     <div class="mb-4">
                                         <label for="mensagem" class="form-label fw-semibold">Mensagem</label>
-<<<<<<< HEAD
                                         <textarea class="form-control" id="mensagem" name="mensagem" rows="5" placeholder="Escreva sua mensagem" required>{{ old('mensagem') }}</textarea>
                                     </div>
 
                                     <button type="submit" class="btn btn-danger w-100 py-2 fw-semibold">Enviar mensagem</button>
-=======
-                                        <textarea class="form-control" id="mensagem" name="mensagem" rows="5" placeholder="Escreva sua mensagem" required></textarea>
-                                    </div>
-
-                                    <button type="button" class="btn btn-danger w-100 py-2 fw-semibold">Enviar mensagem</button>
->>>>>>> origin/main
                                 </form>
                             </div>
                         </div>

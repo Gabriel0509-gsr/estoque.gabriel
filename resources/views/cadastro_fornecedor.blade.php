@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 @extends('layout_principal.principal')
 
 @section('title', 'Cadastro de fornecedores | estoque edu')
@@ -79,8 +78,3 @@
         </div>
     </section>
 @endsection
-=======
-<div>
-    <!-- Knowing is not enough; we must apply. Being willing is not enough; we must do. - Leonardo da Vinci -->
-</div>
->>>>>>> origin/main

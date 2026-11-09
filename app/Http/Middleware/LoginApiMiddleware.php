@@ -2,13 +2,10 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\UsuarioToken;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-use App\Models\UsuarioToken;
-use Illuminate\Support\Facades\Hash;
-use App\Models\Usuario;
-use Carbon\Carbon;
 
 class LoginApiMiddleware
 {
@@ -19,20 +16,40 @@ class LoginApiMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if($request->has('token') && $request->has('usuario_id')){
-            $token = UsuarioToken::where('usuario_id', $request->usuario_id)
-                ->where('token', $request->token)
-                ->where('valido_ate', '>', Carbon::now())
-                ->first();
-                if($token){
-                    return $next($request);
-                }
+        $token = $request->input('token') ?: $request->bearerToken();
 
-         return response()->json(['message' => 'Token Invalido', 'erro' => 's'], 200);
-        }else{
-            return response()->json(['message' => 'Token não fornecido', 'erro' => 's'], 200);
+        if (blank($token)) {
+            $token = $request->header('Authorization');
         }
 
-       
+        if (str_starts_with((string) $token, 'Bearer ')) {
+            $token = substr($token, 7);
+        }
+
+        if (blank($token)) {
+            return response()->json([
+                'message' => 'Token não fornecido',
+                'erro' => 's',
+            ], 401);
+        }
+
+        $tokenValido = UsuarioToken::query()
+            ->where('token', $token)
+            ->where('valido_ate', '>', now())
+            ->first();
+
+        if (! $tokenValido) {
+            return response()->json([
+                'message' => 'Token inválido',
+                'erro' => 's',
+            ], 401);
+        }
+
+        $request->merge([
+            'token' => $tokenValido->token,
+            'usuario_id' => $tokenValido->usuario_id,
+        ]);
+
+        return $next($request);
     }
 }

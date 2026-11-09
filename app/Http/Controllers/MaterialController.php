@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-<<<<<<< HEAD
+
 use App\Models\Material;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -27,15 +27,6 @@ class MaterialController extends Controller
     }
 
     public function update(Request $request, Material $material): RedirectResponse
-=======
-
-use App\Models\Material;
-use Illuminate\Http\Request;
-
-class MaterialController extends Controller
-{
-    public function store(Request $request)
->>>>>>> origin/main
     {
         $dados = $request->validate([
             'nome' => ['required', 'string', 'max:255'],
@@ -45,7 +36,6 @@ class MaterialController extends Controller
             'estoque_minimo' => ['required', 'integer', 'min:0'],
             'localizacao' => ['required', 'string', 'max:255'],
             'estado_conservacao' => ['required', 'string', 'max:255'],
-<<<<<<< HEAD
         ]);
 
         $material->update($dados);
@@ -60,9 +50,30 @@ class MaterialController extends Controller
         return redirect()->route('tabela_materiais')->with('success', 'Material excluído com sucesso.');
     }
 
+    public function store(Request $request): RedirectResponse
+    {
+        $dados = $request->validate([
+            'nome' => ['required', 'string', 'max:255'],
+            'descricao' => ['required', 'string', 'max:255'],
+            'categoria' => ['required', 'string', 'max:255'],
+            'quantidade' => ['required', 'integer', 'min:0'],
+            'estoque_minimo' => ['required', 'integer', 'min:0'],
+            'localizacao' => ['required', 'string', 'max:255'],
+            'estado_conservacao' => ['required', 'string', 'max:255'],
+        ], [
+            'required' => 'Preencha este campo.',
+            'max' => 'Este campo deve ter no máximo :max caracteres.',
+            'integer' => 'Informe um número inteiro.',
+            'min' => 'O valor não pode ser negativo.',
+        ]);
+
+        Material::create($dados);
+
+        return redirect()->route('tabela_materiais')->with('success', 'Produto cadastrado com sucesso.');
+    }
+
     public function salvar_material(Request $request)
     {
-
         $request->validate([
             'nome' => 'required|string|max:255',
             'descricao' => 'required|string|max:255',
@@ -96,12 +107,14 @@ class MaterialController extends Controller
         $request->validate([
             'id' => 'required|integer',
         ]);
+
         $material = Material::find($request->id);
+
         if ($material) {
             return response()->json(['material' => $material, 'erro' => 'n'], 200);
-        } else {
-            return response()->json(['message' => 'Material não encontrado!', 'erro' => 's'], 200);
         }
+
+        return response()->json(['message' => 'Material não encontrado!', 'erro' => 's'], 200);
     }
 
     public function listar_materiais(Request $request)
@@ -120,7 +133,6 @@ class MaterialController extends Controller
 
     public function alterar_material(Request $request)
     {
-
         $request->validate([
             'id' => 'required|integer|exists:material,id',
             'nome' => 'required|string|max:255',
@@ -133,15 +145,7 @@ class MaterialController extends Controller
         ]);
 
         try {
-
             $material = Material::find($request->id);
-
-            if ($material->email != $request->cpf) {
-                $material_email_igual = Material::where('email', $request->email)->first();
-                if ($material_email_igual) {
-                    return response()->json(['message' => 'Email já cadastrado!', 'erro' => 's'], 200);
-                }
-            }
             $material->nome = $request->nome;
             $material->descricao = $request->descricao;
             $material->categoria = $request->categoria;
@@ -149,7 +153,6 @@ class MaterialController extends Controller
             $material->estoque_minimo = $request->estoque_minimo;
             $material->localizacao = $request->localizacao;
             $material->estado_conservacao = $request->estado_conservacao;
-
             $material->save();
 
             return response()->json(['message' => 'Material alterado com sucesso!', 'erro' => 'n'], 200);
@@ -161,10 +164,10 @@ class MaterialController extends Controller
     public function deletar_material(Request $request)
     {
         $request->validate([
-            'id' => 'required|integer|exists:material,id']);
+            'id' => 'required|integer|exists:material,id',
+        ]);
 
         try {
-
             $material = Material::find($request->id);
             $material->delete();
 
@@ -172,20 +175,5 @@ class MaterialController extends Controller
         } catch (\Throwable $th) {
             return response()->json(['message' => 'Erro ao deletar material!', 'erro' => 's', 'msg_erro' => $th->getMessage()], 200);
         }
-
-=======
-        ], [
-            'required' => 'Preencha este campo.',
-            'max' => 'Este campo deve ter no máximo :max caracteres.',
-            'integer' => 'Informe um número inteiro.',
-            'min' => 'O valor não pode ser negativo.',
-        ]);
-
-        Material::create($dados);
-
-        return redirect()
-            ->route('tabela_materiais')
-            ->with('success', 'Produto cadastrado com sucesso.');
->>>>>>> origin/main
     }
 }

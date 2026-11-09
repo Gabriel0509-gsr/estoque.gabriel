@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-<<<<<<< HEAD
 use App\Models\Fornecedor;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -60,12 +59,14 @@ class FornecedorController extends Controller
         $request->validate([
             'id' => 'required|integer',
         ]);
+
         $fornecedor = Fornecedor::find($request->id);
+
         if ($fornecedor) {
             return response()->json(['fornecedor' => $fornecedor, 'erro' => 'n'], 200);
-        } else {
-            return response()->json(['message' => 'Fornecedor não encontrado!', 'erro' => 's'], 200);
         }
+
+        return response()->json(['message' => 'Fornecedor não encontrado!', 'erro' => 's'], 200);
     }
 
     public function listar_fornecedores(Request $request)
@@ -84,18 +85,15 @@ class FornecedorController extends Controller
 
     public function alterar_fornecedor(Request $request)
     {
-
         $request->validate([
             'id' => 'required|integer|exists:fornecedor,id',
             'nome' => 'required|string|max:255',
             'cnpj' => 'required|string|max:255',
             'telefone' => 'required|string|',
             'email' => 'required|string|email|max:255|',
-
         ]);
 
         try {
-
             $fornecedor = Fornecedor::find($request->id);
 
             if ($fornecedor->email != $request->cnpj) {
@@ -104,11 +102,11 @@ class FornecedorController extends Controller
                     return response()->json(['message' => 'Email já cadastrado!', 'erro' => 's'], 200);
                 }
             }
+
             $fornecedor->nome = $request->nome;
             $fornecedor->cnpj = $request->cnpj;
             $fornecedor->telefone = $request->telefone;
             $fornecedor->email = $request->email;
-
             $fornecedor->save();
 
             return response()->json(['message' => 'Fornecedor alterado com sucesso!', 'erro' => 'n'], 200);
@@ -132,13 +130,4 @@ class FornecedorController extends Controller
             return response()->json(['message' => 'Erro ao deletar fornecedor!', 'erro' => 's', 'msg_erro' => $th->getMessage()], 200);
         }
     }
-=======
-use Illuminate\Http\Request;
-use App\Models\Fornecedor;    
-
-
-class FornecedorController extends Controller
-{
-    //
->>>>>>> origin/main
 }
