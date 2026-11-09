@@ -7,7 +7,6 @@ use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\MovimentacaoController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginController;
 
 Route::view('/', 'home_site')->name('home');
 Route::view('/sobre', 'sobre_site')->name('sobre');
@@ -36,5 +35,3 @@ Route::get('/recuperar-senha', [UsuarioController::class, 'forgotPassword'])->na
 Route::post('/recuperar-senha', [UsuarioController::class, 'resetPassword'])->middleware('throttle:5,1')->name('password.update');
 Route::get('/cadastro_usuario', [UsuarioController::class, 'cadastro_html'])->name('cadastro_usuario');
 Route::post('/cadastro_usuario', [UsuarioController::class, 'store'])->middleware('throttle:10,1')->name('usuarios.store');
-
-Route::get('/marquinhos', [LoginController::class, 'mostrarlogin'])->name('login');
