@@ -238,7 +238,7 @@ class UsuarioController extends Controller
             $usuarioToken->valido_ate = now()->addDays(7);
             $usuarioToken->save();
 
-            return response()->json(['message' => 'Login realizado com sucesso!', 'erro' => 'n', 'token' => $usuarioToken->token], 200);
+            return response()->json(['message' => 'Login realizado com sucesso!', 'erro' => 'n', 'token' => $usuarioToken->token,"usuario_id" => $usuario->id], 200);
         }
 
         if ($usuario) {

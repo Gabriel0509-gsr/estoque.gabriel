@@ -41,7 +41,7 @@
                         aria-describedby="senhaHelp" autocomplete="current-password" required>
                 </div>
 
-                <button type="submit" class="btn-subtle theme-accent">Entrar</button>
+                <button type="submit" class="btn-subtle theme-accent" id="entrar" >Entrar</button>
                 </form>
 
             </div>
